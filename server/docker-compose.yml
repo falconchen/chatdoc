@@ -1,0 +1,18 @@
+version: '3.1'
+services:
+  backend:
+    container_name: chatdoc-backend-fastapi
+    image: python:3.9-slim
+    command:
+      - /bin/sh
+      - -c
+      - |
+        pip install --upgrade pip
+        cd /data
+        ./start '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'
+    volumes:
+      - ./:/data
+    ports:
+      - '8000:8000'
+    environment:
+      - HTTP_PROXY='http://localhost:8005'
